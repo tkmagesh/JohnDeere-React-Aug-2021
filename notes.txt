@@ -27,3 +27,9 @@ Server
     App Services
     Domain
     Repository (DAL)
+
+
+Salary Calculator
+    Assumption
+        1. meets 100% functional requirements (No validations are needed)
+        2. Another team will prepare the app for deployment
