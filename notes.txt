@@ -41,4 +41,16 @@ react.js
 react-dom.js
     => responsible for updating the browser DOM (using VDOM)
 
-    
+
+HTML vs JSX
+================================
+    HTML
+        Open tags are closed (without corresponding close tags)
+        "for" attribute is allowed
+        "class" attribute is allowed
+
+    JSX
+        Every open tag must have a corresponding close tag
+        Use 'htmlFor' in place of 'for' attribute
+        Use 'className' in place of 'class' attribute
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX Intro</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        var counter = 0;
+
+            function onBtnRenderClick() {
+                ++counter
+                var appEle = (
+                    <div>
+                        <h1>React.js</h1>
+                        <hr/>
+                        <section>
+                            <h3>Introduction</h3>
+                            <p>Pariatur eu adipisicing fugiat proident magna tempor. Consequat labore culpa enim ad sint nulla esse non irure. Aute velit cillum nostrud incididunt dolor aliquip laboris eiusmod sunt.Pariatur cillum adipisicing ex sint. Consectetur reprehenderit ut esse officia laborum magna eu labore. Anim pariatur labore duis ut. Duis amet velit nostrud velit incididunt ullamco ipsum. Et sint commodo non excepteur. Est dolore ex deserunt incididunt velit veniam sunt. Pariatur aliquip in quis ullamco dolore sunt exercitation qui mollit.</p>
+                            <p>Pariatur duis ipsum pariatur anim ex excepteur et veniam qui et cupidatat. Qui mollit occaecat nisi ullamco dolore esse fugiat mollit. Id nisi Lorem labore est do officia proident exercitation et labore incididunt.Sunt consequat magna cupidatat reprehenderit minim ipsum pariatur officia. Anim magna fugiat sint quis commodo nulla. Enim nostrud do elit ad est occaecat aliqua aliqua fugiat quis qui fugiat laboris.</p>
+                            <p>In reprehenderit dolore ipsum magna. Ut nostrud cillum ex duis voluptate ipsum Lorem esse. Voluptate sit aliquip labore ad sint magna consectetur ipsum sit qui dolor non. Consectetur tempor quis excepteur eu deserunt excepteur amet tempor eu deserunt id exercitation. Dolor aute velit aute eiusmod in consequat. Veniam magna ad magna est laboris. Mollit sit amet dolore ex.Ullamco laboris consequat ipsum esse do nostrud nostrud nisi magna sit. Veniam dolore nulla ullamco consectetur qui voluptate adipisicing dolor. Nisi ullamco aliqua est cupidatat enim nostrud dolore nisi occaecat mollit consectetur velit. Excepteur anim enim officia cupidatat. Et nisi eiusmod amet voluptate do. Deserunt adipisicing est in excepteur non eiusmod ullamco cillum. Qui nulla nisi enim in incididunt enim minim fugiat excepteur officia duis reprehenderit labore adipisicing.</p>
+                        </section>
+                        <section>
+                            <h3>Advantages</h3>
+                            <ul>
+                                <li>Declarative</li>
+                                <li>Efficient</li>
+                            </ul>
+                        </section>
+                    </div> 
+                );
+                ReactDOM.render(appEle, document.getElementById('root'));
+
+            }
+            function onDocumentLoad() {
+                var btnRender = document.getElementById('btnRender');
+                btnRender.addEventListener('click', onBtnRenderClick);
+            }
+            window.addEventListener('load', onDocumentLoad);
+
+    </script>
+</head>
+<body>
+    <input type="button" value="Render" id="btnRender">
+    <div id="root">
+
+    </div>
+</body>
+</html>
