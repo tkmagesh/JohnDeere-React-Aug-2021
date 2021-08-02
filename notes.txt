@@ -33,3 +33,12 @@ Salary Calculator
     Assumption
         1. meets 100% functional requirements (No validations are needed)
         2. Another team will prepare the app for deployment
+
+
+react.js
+    => responsible for managing VDOM
+
+react-dom.js
+    => responsible for updating the browser DOM (using VDOM)
+
+    
