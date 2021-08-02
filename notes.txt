@@ -1,0 +1,29 @@
+Magesh Kuppan
+
+Methodolgy
+    No powerpoint
+    50% completion
+
+Schedule
+    Commence : 10:00
+    Tea Break : 11:30 (20 mins)
+    Lunch Break : 13:30 (1 Hr)
+    Tea Break : 16:00 (20 mins)
+    Wind up : 18:00
+
+Name
+Total Experience
+Primary Skillset
+Experince in any JS framework (Backbone, Angular, React or any other framework)
+
+
+What is React?
+    Framework for building UI applications for the browser
+
+
+
+Server
+    UI
+    App Services
+    Domain
+    Repository (DAL)
