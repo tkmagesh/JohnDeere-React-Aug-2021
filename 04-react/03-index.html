@@ -1,10 +1,85 @@
-<h1>Calculator</h1>
-<hr>
-<input type="number" name="" id=""
-><input type="number" name="" id="">
-<br>
-<input type="button" value="Add">
-<input type="button" value="Subtract">
-<input type="button" value="Multiply">
-<input type="button" value="Divide">
-<div>[Result]</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .positive{
+            color : green;
+        }
+        .negative{
+            color : red;
+        }
+
+    </style>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        class Calculator extends React.Component{
+            state = {
+                n1 :0,
+                n2 : 0,
+                result : 0
+            };
+
+            onBtnClick = (op) => {
+                const { n1, n2 } = this.state;
+                switch (op) {
+                    case 'Add':
+                        this.setState({ result : n1 + n2});
+                        break;
+                    case 'Subtract':
+                        this.setState({ result: n1 - n2 });
+                        break;
+                    case 'Multiply':
+                        this.setState({ result: n1 * n2 });
+                        break;
+                    case 'Divide':
+                        this.setState({ result: n1 / n2 });
+                        break;
+                }
+            }
+
+
+            render(){
+                const { result } = this.state;
+                //approach - 1
+                /* 
+                const resultElm = result >=0 ? (<div className="positive">{result}</div>) : (<div className="negative">{result}</div>) 
+                */
+                
+                //approach-2
+                /* 
+                const resultClass = result >= 0 ? 'positive' : 'negative';
+                const resultElm = (<div className={resultClass}>{result}</div>) 
+                */
+                return(
+                    <div>
+                        <h1>Calculator</h1>
+                        <hr/>
+                        <input type="number" onChange={evt => this.setState({n1 : parseInt(evt.target.value)})} />
+                        <input type="number" onChange={evt => this.setState({n2: parseInt(evt.target.value) })}/>
+                        <br/>
+                        <input type="button" value="Add" onClick={ evt => this.onBtnClick(evt.target.value) }/>
+                        <input type="button" value="Subtract" onClick={ evt => this.onBtnClick(evt.target.value) }/>
+                        <input type="button" value="Multiply" onClick={ evt => this.onBtnClick(evt.target.value) }/>
+                        <input type="button" value="Divide" onClick={ evt => this.onBtnClick(evt.target.value) }/>
+                        {/* {resultElm} */}
+
+                        {/* Approach-3 */}
+                        <div className={ result >= 0 ? 'positive' : 'negative'}>{result}</div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Calculator/>, document.getElementById('root'))
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
