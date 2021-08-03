@@ -17,11 +17,17 @@
         class Greeter extends React.Component {
             //presentation + UI Behavior + State
 
-            msg = 'New Dummy Message'
+            //state
+            //msg = 'New Dummy Message'
+            state = {
+                msg : 'New Dummy Message'
+            };
 
             //UI Behavior
             onBtnGreetClick = () => {
-                console.log(this.msg);
+                this.setState({
+                    msg : 'User greeted with a new message'
+                });
             }
 
             //presentation
@@ -33,13 +39,14 @@
                         <label htmlFor="">User Name :</label>
                         <input type="text" name="" id=""/>
                         <input type="button" value="Greet" onClick={this.onBtnGreetClick}/>
-                        <div className="message">{this.msg}</div>
+                        <div className="message">{this.state.msg}</div>
                     </div>
                 )
             }
         }
 
-        ReactDOM.render(React.createElement(Greeter), document.getElementById('root'));
+        /* ReactDOM.render(React.createElement(Greeter), document.getElementById('root')); */
+        ReactDOM.render(<Greeter/>, document.getElementById('root'))
     </script>
 </head>
 <body>
