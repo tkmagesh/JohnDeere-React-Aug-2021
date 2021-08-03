@@ -10,8 +10,23 @@
     <script src="babel.min.js"></script>
     <script type="text/babel">
         class Products extends React.Component {
+
+            txtProductNameRef = React.createRef();
+            
+            state = {
+                productNames : [],
+                newProductName : ''
+            }
+            onAddNewClick = () => {
+                const { productNames, newProductName } = this.state;
+                this.setState({ 
+                    productNames : [...productNames, newProductName],
+                    newProductName : ''
+                });
+                this.txtProductNameRef.current.focus();
+            }
             render(){
-                const productNames = [ 'Pen', 'Pencil', 'Marker', 'Scribble Pad'];
+                const { productNames, newProductName } = this.state;
                 
                 /*
                 const productItems = [];
@@ -26,6 +41,13 @@
                     <>
                         <h1>Products</h1>
                         <hr/>
+                        <label>Product Name :</label>
+                        <input type="text" 
+                            ref = {this.txtProductNameRef}
+                            value={newProductName} 
+                            onChange={ evt => this.setState({ newProductName : evt.target.value})} 
+                        />
+                        <input type="button" value="Add New" onClick={this.onAddNewClick}/>
                         <ul>
                             { productItems }
                         </ul>
