@@ -20,13 +20,22 @@
             //state
             //msg = 'New Dummy Message'
             state = {
-                msg : 'New Dummy Message'
+                msg : 'New Dummy Message',
+                userName : ''
             };
 
             //UI Behavior
             onBtnGreetClick = () => {
+                //const userName = this.state.userName;
+                const { userName } = this.state;
                 this.setState({
-                    msg : 'User greeted with a new message'
+                    msg : `Hi ${userName}, Have a nice day!`
+                });
+            }
+
+            onTxtUserNameChange = (evt) => {
+                this.setState({
+                    userName : evt.target.value
                 });
             }
 
@@ -37,7 +46,7 @@
                         <h1>Greeter</h1>
                         <hr/>
                         <label htmlFor="">User Name :</label>
-                        <input type="text" name="" id=""/>
+                        <input type="text" onChange={this.onTxtUserNameChange}/>
                         <input type="button" value="Greet" onClick={this.onBtnGreetClick}/>
                         <div className="message">{this.state.msg}</div>
                     </div>
