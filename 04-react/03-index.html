@@ -25,7 +25,7 @@
                 result : 0
             };
 
-            onBtnClick = (op) => {
+            onBtnClick = op => {
                 const { n1, n2 } = this.state;
                 switch (op) {
                     case 'Add':
@@ -63,10 +63,10 @@
                         <input type="number" onChange={evt => this.setState({n1 : parseInt(evt.target.value)})} />
                         <input type="number" onChange={evt => this.setState({n2: parseInt(evt.target.value) })}/>
                         <br/>
-                        <input type="button" value="Add" onClick={ evt => this.onBtnClick(evt.target.value) }/>
-                        <input type="button" value="Subtract" onClick={ evt => this.onBtnClick(evt.target.value) }/>
-                        <input type="button" value="Multiply" onClick={ evt => this.onBtnClick(evt.target.value) }/>
-                        <input type="button" value="Divide" onClick={ evt => this.onBtnClick(evt.target.value) }/>
+                        <input type="button" value="Add" onClick={ evt => this.onBtnClick('Add') }/>
+                        <input type="button" value="Subtract" onClick={ evt => this.onBtnClick('Subtract') }/>
+                        <input type="button" value="Multiply" onClick={ evt => this.onBtnClick('Multiply') }/>
+                        <input type="button" value="Divide" onClick={ evt => this.onBtnClick('Divide') }/>
                         {/* {resultElm} */}
 
                         {/* Approach-3 */}
