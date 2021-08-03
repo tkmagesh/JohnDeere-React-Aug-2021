@@ -96,3 +96,26 @@ ES6 (ECMAScript 6 / ES2015 / ESNext )
         4. Using the 'apply' method of the function
         5. As an 'Immediately Invoked Function Expression'
         6. Using the 'new' keyword
+
+
+Class Vs. Function components
+    Class
+        Component objects need to be created
+        All the lifecycle events will be executed irrespective whether they are used or not
+        
+
+    React Hooks
+        functions using which we can handle sideeffects in a functional component
+        all hook function names must start 'use'
+        hook functions must be used only in a functional component
+        builtin hooks
+            - useState
+            - useEffect
+            - useRef
+            - useMemo
+            - useCallback
+            - useContext
+            - useReducer
+
+
+        
