@@ -85,4 +85,14 @@ ES6 (ECMAScript 6 / ES2015 / ESNext )
             reduce
 
         
+    Function Invocation Patterns
+        1. As a method of an obj
+            this => obj
 
+        2. As a function
+            this => global scope (window)
+
+        3. Using the 'call' method of the method
+        4. Using the 'apply' method of the function
+        5. As an 'Immediately Invoked Function Expression'
+        6. Using the 'new' keyword
