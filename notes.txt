@@ -118,4 +118,13 @@ Class Vs. Function components
             - useReducer
 
 
-        
+State
+    1. UI State
+        Data that supports the presentation needs of the component
+        It is highly UNLIKELY that this data is needed outside the component
+        Suitable to maintain them in the component state
+
+    2. Application State
+        Data that supports the core application logic
+        It is highly LIKELY that this data is needed outside the component
+        DO NOT maintain this data in the component state

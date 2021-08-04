@@ -22,8 +22,11 @@
                 this.setState({ 
                     productNames : [...productNames, newProductName],
                     newProductName : ''
+                }, () => {
+                    this.props.onProductsChange(this.state.productNames.length)
                 });
                 this.txtProductNameRef.current.focus();
+                
             }
             render(){
                 const { productNames, newProductName } = this.state;
@@ -41,7 +44,7 @@
                     <>
                         <h1>Products</h1>
                         <hr/>
-                        <div>Prodcuts Count : <span>[count]</span></div>
+                        
                         <label>Product Name :</label>
                         <input type="text" 
                             ref = {this.txtProductNameRef}
@@ -57,7 +60,22 @@
             }
         }
 
-        ReactDOM.render(<Products/>, document.getElementById('root'))
+        const ProductsCount = ({count}) => (<div>Prodcuts Count : <span>{count}</span></div>)
+
+        const ProductsApp = () => {
+            const [productsCount, setProductsCount] = React.useState(0);
+
+            return(
+                <div>
+                    <ProductsCount count={productsCount} />
+                    <Products onProductsChange = { count => setProductsCount(count)}/>
+                </div>
+            )
+        }
+
+        ReactDOM.render(
+            <ProductsApp/>
+        , document.getElementById('root'))
     </script>
 </head>
 <body>
