@@ -1,7 +1,8 @@
 const StateManager = (function(){
     let _currentState = undefined,
         _subscribers = [],
-        _reducer = undefined;
+        _reducer = undefined,
+        _init_action = { type : '@@INIT/ACTION' };
 
     function getState(){
         return _currentState;
@@ -27,6 +28,8 @@ const StateManager = (function(){
         if (typeof reducer !== 'function') 
             throw new Error('Reducer must be a function!')
         _reducer = reducer;
+        //invoke the reducer to initialize the _currentState with a valid default state
+        _currentState = _reducer(_currentState, _init_action);
         const store = { getState, subscribe, dispatch }
         return store;
     }
