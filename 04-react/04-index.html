@@ -36,11 +36,12 @@
                     productItems.push(productItem);
                 }
                 */
-                const productItems = productNames.map((productName, index) => (<li key={index}>{productName}</li>));
+                const productItems = productNames.map((productName, index) => (<li key={index}><span>{productName}</span><input type="button" value="Remove"/></li>));
                 return(
                     <>
                         <h1>Products</h1>
                         <hr/>
+                        <div>Prodcuts Count : <span>[count]</span></div>
                         <label>Product Name :</label>
                         <input type="text" 
                             ref = {this.txtProductNameRef}
