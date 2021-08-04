@@ -48,7 +48,7 @@
             }
         }
 
-        const spinnerActionDispatchers = StateManager.bindActionDispatchers(spinnerActionCreators, store.dispatch);
+        const spinnerActionDispatchers = StateManager.bindActionCreators(spinnerActionCreators, store.dispatch);
 
         const Spinner = ({value, increment, decrement, doubleIncrement, doubleDecrement}) => {
             return (

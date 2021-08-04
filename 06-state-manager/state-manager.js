@@ -34,7 +34,7 @@ const StateManager = (function(){
         return store;
     }
 
-    function bindActionDispatchers(actionCreators, dispatch) {
+    function bindActionCreators(actionCreators, dispatch) {
         const actionDispatchers = {};
         for (let key in actionCreators){
             actionDispatchers[key] = function(...args){
@@ -45,6 +45,6 @@ const StateManager = (function(){
         return actionDispatchers;
     }
 
-    return { createStore, bindActionDispatchers }
+    return { createStore, bindActionCreators }
 
 })()

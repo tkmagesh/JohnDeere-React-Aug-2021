@@ -36,7 +36,7 @@
             }
         }
 
-        function bindActionDispatchers(actionCreators, dispatch) {
+        function bindActionCreators(actionCreators, dispatch) {
             const spinnerActionDispatchers = {
                 decrement() {
                     const action = actionCreators.decrement();
@@ -50,7 +50,7 @@
             return spinnerActionDispatchers;
         }
         
-        const spinnerActionDispatchers = bindActionDispatchers(spinnerActionCreators, store.dispatch);
+        const spinnerActionDispatchers = bindActionCreators(spinnerActionCreators, store.dispatch);
 
         const Spinner = ({value, increment, decrement}) => {
             return (
