@@ -40,12 +40,12 @@
     </style>
     <!-- 
         Use Cases:
-            1. Add new bugs
-            2. List the bugs
-            3. Remove any bug
-            4. Toggle the 'closed' status of any bug
-            5. Remove 'closed' bugs
-            6. Display the stats ( # of closed bugs / total # of bugs )
+            (done) 1. Add new bugs
+            (done) 2. List the bugs
+            (done) 3. Remove any bug
+            (done) 4. Toggle the 'closed' status of any bug
+            (done) 5. Remove 'closed' bugs
+            (done) 6. Display the stats ( # of closed bugs / total # of bugs )
             7. Sort the bugs
             8. Persist the bugs in the server
             9. Implement the 'Projects' module
@@ -61,6 +61,12 @@
         //responsible ONLY for update the store state
         function bugsReducer(currentState = [], action){
             if (action.type === 'BUG_ADD') return [...currentState, action.payload];
+            if (action.type === 'BUG_UPDATE') 
+                return currentState.map(bug => bug.id === action.payload.id ? action.payload : bug)
+            if (action.type === 'BUG_REMOVE')
+                return currentState.filter(bug => bug.id !== action.payload.id)
+            if (action.type === 'BUG_REMOVE_CLOSED')
+                return currentState.filter(bug => !bug.isClosed)
             return currentState;
         }
 
@@ -77,7 +83,21 @@
                 };
                 const action = { type : 'BUG_ADD', payload : newBug };
                 return action;
+            },
+            toggle(bugToToggle){
+                const toggledBug = {...bugToToggle, isClosed : !bugToToggle.isClosed}
+                const action = { type : 'BUG_UPDATE', payload : toggledBug}
+                return action;
+            },
+            remove(bugToRemove){
+                const action = { type : 'BUG_REMOVE', payload : bugToRemove}
+                return action;
+            },
+            removeClosed(){
+                const action= { type : 'BUG_REMOVE_CLOSED'}
+                return action;
             }
+
         }
 
         const store = Redux.createStore(bugsReducer);
@@ -85,14 +105,29 @@
         const bugActionDispatchers = Redux.bindActionCreators(bugActionCreators, store.dispatch);
 
 
-        const Bugs = ({bugs, addNew}) => {
+        const Bugs = ({bugs, addNew, toggle, remove, removeClosed }) => {
             const [newBugName, setNewBugName] = React.useState('');
-
+            const closedCount = bugs.reduce((result, bug) => bug.isClosed ? result + 1 : result, 0);
+            const bugList = bugs.map(bug => {
+                const bugStyle = 'bugname ' + (bug.isClosed ? 'closed' : '');
+                return (
+                    <li key={bug.id}>
+                        <span 
+                            className={bugStyle}
+                            onClick={() => toggle(bug)}
+                        >
+                            {bug.name}
+                        </span>
+                        <div className="datetime">{bug.createdAt.toString()}</div>
+                        <input type="button" value="Remove" onClick={() => remove(bug)} />
+                    </li>
+                )
+            })
             return(
                 <>
                     <h3>Bugs</h3>
                     <section className="stats">
-                        <span className="closed">1</span>
+                        <span className="closed">{closedCount}</span>
                         <span> / </span>
                         <span>{bugs.length}</span></section>
                     <section className="sort">
@@ -111,18 +146,9 @@
                     </section>
                     <section className="list">
                         <ol>
-                            <li>
-                                <span className="bugname">[Bug Name]</span>
-                                <div className="datetime">[Created At]</div>
-                                <input type="button" value="Remove" />
-                            </li>
-                            <li>
-                                <span className="bugname closed">[Bug Name]</span>
-                                <div className="datetime">[Created At]</div>
-                                <input type="button" value="Remove" />
-                            </li>
+                           {bugList}
                         </ol>
-                        <input type="button" value="Remove Closed" />
+                        <input type="button" value="Remove Closed" onClick={removeClosed}/>
                     </section>
                 </>
             )
