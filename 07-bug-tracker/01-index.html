@@ -46,7 +46,7 @@
             (done) 4. Toggle the 'closed' status of any bug
             (done) 5. Remove 'closed' bugs
             (done) 6. Display the stats ( # of closed bugs / total # of bugs )
-            7. Sort the bugs
+            (assignment) 7. Sort the bugs
             8. Persist the bugs in the server
             9. Implement the 'Projects' module
             10. Associcate the bug to a corresponding project
@@ -65,8 +65,8 @@
                 return currentState.map(bug => bug.id === action.payload.id ? action.payload : bug)
             if (action.type === 'BUG_REMOVE')
                 return currentState.filter(bug => bug.id !== action.payload.id)
-            if (action.type === 'BUG_REMOVE_CLOSED')
-                return currentState.filter(bug => !bug.isClosed)
+            if (action.type === 'BUG_INIT')
+                return action.payload;
             return currentState;
         }
 
@@ -93,8 +93,9 @@
                 const action = { type : 'BUG_REMOVE', payload : bugToRemove}
                 return action;
             },
-            removeClosed(){
-                const action= { type : 'BUG_REMOVE_CLOSED'}
+            removeClosed(bugs /* TO BE FIXED. Explore how to access the store state in the action creator */){
+                const bugsToRetain = bugs.filter(bug => !bug.isClosed)
+                const action= { type : 'BUG_INIT', payload : bugsToRetain}
                 return action;
             }
 
@@ -111,6 +112,7 @@
             const bugList = bugs.map(bug => {
                 const bugStyle = 'bugname ' + (bug.isClosed ? 'closed' : '');
                 return (
+                    /* BugItem */
                     <li key={bug.id}>
                         <span 
                             className={bugStyle}
@@ -126,10 +128,13 @@
             return(
                 <>
                     <h3>Bugs</h3>
+                    {/* BugStats */}
                     <section className="stats">
                         <span className="closed">{closedCount}</span>
                         <span> / </span>
-                        <span>{bugs.length}</span></section>
+                        <span>{bugs.length}</span>
+                    </section>
+                    {/* BugSort */}
                     <section className="sort">
                         <label htmlFor="">Order By :</label>
                         <select name="" id="">
@@ -139,16 +144,18 @@
                         </select><label htmlFor="">Descending ? :</label>
                         <input type="checkbox" name="" id="" />
                     </section>
+                    {/* BugEdit */}
                     <section className="edit">
                         <label htmlFor="">Bug Name :</label>
                         <input type="text" onChange = { evt => setNewBugName(evt.target.value) }/>
                         <input type="button" value="Add New" onClick={() => addNew(newBugName)} />
                     </section>
+                    {/* BugList */}
                     <section className="list">
                         <ol>
                            {bugList}
                         </ol>
-                        <input type="button" value="Remove Closed" onClick={removeClosed}/>
+                        <input type="button" value="Remove Closed" onClick={() => removeClosed(bugs)}/>
                     </section>
                 </>
             )
