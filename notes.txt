@@ -148,7 +148,10 @@ To create a react application
 
     yarn create react-app <app-name>
 
-
+ES6 Modules
+    Everything defined in a JS file is considered private
+    Public entites have to be explicitly 'exported'
+    Entites from other files have to be explicitly 'imported'
 
 
 
