@@ -128,3 +128,27 @@ State
         Data that supports the core application logic
         It is highly LIKELY that this data is needed outside the component
         DO NOT maintain this data in the component state
+
+
+npm & yarn
+
+to install yarn
+    [sudo] npm install -g yarn
+
+To create a react application
+
+    npm install create-react-app -g
+    create-react-app <app-name>
+
+    OR
+    
+    npx create-react-app <app-name>
+
+    OR
+
+    yarn create react-app <app-name>
+
+
+
+
+
