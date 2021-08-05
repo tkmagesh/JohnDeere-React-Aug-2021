@@ -154,4 +154,28 @@ ES6 Modules
     Entites from other files have to be explicitly 'imported'
 
 
+src
+    bugs
+        /actions
+            addNew.js
+            toggle.js
+            remove.js
+            removeClosed.js
+        /components
+            BugStats.jsx
+            BugSort.jsx
+            BugEdit.jsx
+            BugItem.jsx
+            BugList.jsx
+        /reducers
+            bugsReducer.js
+        index.js (main Bugs component)
+        index.css
+    store
+        index.js
+
+    index.js
+
+
+
 
