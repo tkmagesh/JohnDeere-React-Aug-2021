@@ -183,7 +183,21 @@ Installing redux
     yarn add redux
 
 
+Assignment
 
+Add a projects module to the bug-tracker-app
+
+Use cases:
+    1. Adding a project
+    2. Listing the projects
+
+store/index.js
+    comment the bugsReducer
+    instead use the projects reducer
+
+index.js
+    Commend everything related to bugs
+    include the projects and make it work
 
 
 
