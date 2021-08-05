@@ -161,6 +161,7 @@ src
             toggle.js
             remove.js
             removeClosed.js
+            index.js (create the actionCreator by importing the actions from other files)
         /components
             BugStats.jsx
             BugSort.jsx
