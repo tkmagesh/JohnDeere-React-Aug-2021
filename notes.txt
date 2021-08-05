@@ -176,6 +176,13 @@ src
 
     index.js
 
+Installing redux
+    npm install redux
+    OR
+    yarn add redux
+
+
+
 
 
 
