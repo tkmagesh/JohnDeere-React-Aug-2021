@@ -1,5 +1,5 @@
 import BugItem from './bug-item';
-import { connect } from 'react-redux';
+/* import { connect } from 'react-redux'; */
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import bugActionCreators from '../actions'

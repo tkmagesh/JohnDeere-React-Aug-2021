@@ -217,3 +217,7 @@ Presentation Components / Dumb Components
     receive the data from the parent component
 
 redux-logger redux-thunk
+
+
+react developer tools
+redux developer tools
