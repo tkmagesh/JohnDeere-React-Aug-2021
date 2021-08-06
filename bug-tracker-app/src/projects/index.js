@@ -1,5 +1,8 @@
 import { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import projectActionCreators from './actions'
 import './index.css';
 
 const Projects = ({projects, addNew}) => {
@@ -23,4 +26,14 @@ const Projects = ({projects, addNew}) => {
     )
 }
 
-export default Projects;
+function mapStateToProps(storeState){
+    const projectsFromStore = storeState.projectState
+    return { projects : projectsFromStore }
+}
+
+function mapDispatchToProps(dispatch){
+    const bugActionDispatchers = bindActionCreators(projectActionCreators, dispatch);
+    return bugActionDispatchers;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects);

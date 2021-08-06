@@ -199,5 +199,14 @@ index.js
     Commend everything related to bugs
     include the projects and make it work
 
+react-redux
+    adapter that connect react with redux
+
+    connect
+        given the storeState, extract the data for the component from the store state
+        given the dispatch, create action dispatchers to be passed to the component
+
+    Provider
+        facilitates access to the storeState and dispatch to the 'connected' components
 
 
