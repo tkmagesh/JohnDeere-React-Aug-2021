@@ -1,7 +1,4 @@
 import { Fragment, useState } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import projectActionCreators from './actions'
 
 import './index.css';
 

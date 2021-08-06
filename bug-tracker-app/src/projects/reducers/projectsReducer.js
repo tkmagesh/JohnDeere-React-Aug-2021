@@ -1,6 +1,6 @@
 const initialState = [
-    { id : 'P101', name : 'Payroll Master' },
-    { id : 'P102', name : 'Bug Tracker' } 
+    { id : 10, name : 'Payroll Master' },
+    { id : 12, name : 'Bug Tracker' } 
 ];
 function projectsReducer(currentState = initialState, action){
     if (action.type === 'PROJECT_ADD') return [...currentState, action.payload];
