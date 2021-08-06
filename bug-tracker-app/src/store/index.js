@@ -69,6 +69,6 @@ const rootReducer = combineReducers({
 });
 
 /* const store = createStore(rootReducer, applyMiddleware(loggerMiddleware, asyncMiddleware, promiseMiddleware)); */
-const store = createStore(rootReducer, applyMiddleware(logger, thunk, promiseMiddleware)); 
+const store = createStore(rootReducer, applyMiddleware(thunk, promiseMiddleware)); 
 
 export default store;

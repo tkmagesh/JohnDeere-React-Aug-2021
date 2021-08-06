@@ -14,8 +14,8 @@ window['axios'] = axios;
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <Projects/>
       <Bugs/>
+      <Projects/>
     </div>
   </Provider>
     , document.getElementById('root')

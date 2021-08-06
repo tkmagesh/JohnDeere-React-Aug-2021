@@ -1,6 +1,6 @@
-import axios from 'axios'
+//import axios from 'axios'
 
-function getInMemoryBugs(){
+/* function getInMemoryBugs(){
     return [
         {id : 100, name : 'InMemory Bug - 1', isClosed: false, createdAt : new Date()},
         {id : 101, name : 'InMemory Bug - 2', isClosed: false, createdAt : new Date()}
@@ -16,7 +16,7 @@ function getServerBugs(){
         console.table(bugs);
     })
     return p2;
-}
+} */
 
 
 //using the asyncMiddleware
@@ -42,10 +42,11 @@ function load(){
 }
  */
 
+import bugApi from '../services/bugApi'
 
 //using the promiseMiddleware
 async function load(){
-    const bugs = await getServerBugs();
+    const bugs = await bugApi.getAll()
     const action = { type : 'BUG_INIT', payload : bugs }
     return action;
 } // returns a promise when resolved will give the action
