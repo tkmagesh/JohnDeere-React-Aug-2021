@@ -10,21 +10,22 @@ import bugActionCreators from './actions';
 
 import './index.css'
 
-const Bugs = ({bugs, addNew, toggle, remove, removeClosed }) => {
+const Bugs = ({bugs, addNew, toggle, remove, removeClosed, projects }) => {
     return(
         <>
             <h3>Bugs</h3>
             <BugStats bugs={bugs} />
             <BugSort />
-            <BugEdit addNew={addNew} />
-            <BugList {...{bugs, toggle, remove, removeClosed}} />
+            <BugEdit addNew={addNew} projects={projects} />
+            <BugList/>
         </>
     );
 }
 
 function mapStateToProps(storeState){
     const bugsFromStore = storeState.bugState;
-    return { bugs : bugsFromStore }
+    const projectsFromStore = storeState.projectState;
+    return { bugs : bugsFromStore, projects : projectsFromStore };
 }
 
 function mapDispatchToProps(dispatch){

@@ -1,4 +1,7 @@
 import BugItem from './bug-item';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import bugActionCreators from '../actions'
 
 const BugList = ({bugs, toggle, remove, removeClosed}) => {
     const bugList = bugs.map(bug => (
@@ -14,4 +17,7 @@ const BugList = ({bugs, toggle, remove, removeClosed}) => {
     )
 }
 
-export default BugList;
+export default connect(
+    storeState =>({bugs : storeState.bugState}),
+    dispatch => bindActionCreators(bugActionCreators, dispatch)
+)(BugList);

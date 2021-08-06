@@ -209,4 +209,10 @@ react-redux
     Provider
         facilitates access to the storeState and dispatch to the 'connected' components
 
+Container Components / Smart Components
+    interface with redux infrastructure
+
+Presentation Components / Dumb Components
+    do not have any knowledge of the redux infrastructure
+    receive the data from the parent component
 
