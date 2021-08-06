@@ -10,7 +10,7 @@ import bugActionCreators from './actions';
 
 import './index.css'
 
-const Bugs = ({bugs, addNew, toggle, remove, removeClosed, projects }) => {
+const Bugs = ({bugs, addNew, projects }) => {
     return(
         <>
             <h3>Bugs</h3>
@@ -29,8 +29,8 @@ function mapStateToProps(storeState){
 }
 
 function mapDispatchToProps(dispatch){
-    const bugActionDispatchers = bindActionCreators(bugActionCreators, dispatch);
-    return bugActionDispatchers;
+    const { addNew } = bindActionCreators(bugActionCreators, dispatch);
+    return { addNew };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bugs);

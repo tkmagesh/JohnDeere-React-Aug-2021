@@ -18,6 +18,6 @@ const BugList = ({bugs, toggle, remove, removeClosed}) => {
 }
 
 export default connect(
-    storeState =>({bugs : storeState.bugState}),
-    dispatch => bindActionCreators(bugActionCreators, dispatch)
+    storeState =>({bugs : storeState.bugState}) /* mapStateToProps */,
+    dispatch => bindActionCreators(bugActionCreators, dispatch) /* mapDispatchToProps */
 )(BugList);
