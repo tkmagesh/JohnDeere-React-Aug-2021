@@ -7,16 +7,29 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 import Bugs from './bugs'; 
 import Projects from './projects';
+import App from './App';
 import TimerContainer from './timer/timerContainer'
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom'
 
 ReactDOM.render(
   <Provider store={store}>
-
     <div>
       <h1>Bug Tracker</h1>
       <TimerContainer/>
-      <Bugs/>
-      <Projects/>
+      <Router>
+        <hr/>
+        <div>
+          <span> [ <Link to="/">Home</Link> ] </span>
+          <span> [ <Link to="/projects">Projects</Link> ] </span>
+          <span> [ <Link to="/bugs">Bugs</Link> ] </span>
+        </div>
+        <hr/>
+        <Switch>
+          <Route path="/bugs" component={Bugs}/>
+          <Route path="/projects" component={Projects}/>
+          <Route path="/" component={App}/>
+        </Switch>
+      </Router>  
     </div>
   </Provider>
     , document.getElementById('root')
