@@ -7,13 +7,14 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 import Bugs from './bugs'; 
 import Projects from './projects';
-
-import axios from 'axios';
-window['axios'] = axios;
+import TimerContainer from './timer/timerContainer'
 
 ReactDOM.render(
   <Provider store={store}>
+
     <div>
+      <h1>Bug Tracker</h1>
+      <TimerContainer/>
       <Bugs/>
       <Projects/>
     </div>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { useEffect } from 'react';
 import BugStats from './components/bug-stats'
 import BugSort from './components/bug-sort'
 import BugEdit from './components/bug-edit'
@@ -11,10 +11,12 @@ import bugActionCreators from './actions';
 import './index.css'
 
 const Bugs = ({bugs, addNew, projects, load }) => {
+    useEffect(() => {
+        load()
+    }, [load])
     return(
         <>
             <h3>Bugs</h3>
-            <input type="button" value="Load" onClick={load}/>
             <BugStats bugs={bugs} />
             <BugSort />
             <BugEdit addNew={addNew} projects={projects} />
