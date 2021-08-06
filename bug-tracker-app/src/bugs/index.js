@@ -10,10 +10,11 @@ import bugActionCreators from './actions';
 
 import './index.css'
 
-const Bugs = ({bugs, addNew, projects }) => {
+const Bugs = ({bugs, addNew, projects, load }) => {
     return(
         <>
             <h3>Bugs</h3>
+            <input type="button" value="Load" onClick={load}/>
             <BugStats bugs={bugs} />
             <BugSort />
             <BugEdit addNew={addNew} projects={projects} />
@@ -29,8 +30,8 @@ function mapStateToProps(storeState){
 }
 
 function mapDispatchToProps(dispatch){
-    const { addNew } = bindActionCreators(bugActionCreators, dispatch);
-    return { addNew };
+    const { addNew, load } = bindActionCreators(bugActionCreators, dispatch);
+    return { addNew, load };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bugs);

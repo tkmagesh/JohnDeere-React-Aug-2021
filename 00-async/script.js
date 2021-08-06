@@ -26,12 +26,22 @@
         return p;
     }
 
-    function addAsyncClient(x,y){
+   
+
+
+    /*function addAsyncClient(x,y){
         console.log(`[@client] triggering the service`)
         var p = addAsync(x,y)
         p.then(function(result){
             console.log(`[@client] result = ${result}`);
         })
+    } */
+
+    async function addAsyncClient(x,y){
+        console.log(`[@client] triggering the service`);
+        let result = await addAsync(x,y);
+        console.log(`[@client] result = ${result}`);
+        return result * 2;
     }
 
     window['addAsyncClient'] = addAsyncClient;
